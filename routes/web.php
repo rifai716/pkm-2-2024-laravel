@@ -13,3 +13,7 @@ Route::get('tailwind-testing', function () {
 Route::get('login', function () {
     return view('login');
 });
+
+Route::get('/admin/dashboard', function () {
+    return view('dashboard');
+});
