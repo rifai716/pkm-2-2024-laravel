@@ -75,11 +75,21 @@
     <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
-      var socket = io('http://localhost:3000');
+        var socket = io('http://localhost:3000');
 
-      $('#kirim').click(function() {
-        let pesan = $('#description').val();
-        socket.emit('chat', pesan);
-      })
+        $('#kirim').click(function() {
+            let pesan = $('#description').val();
+            socket.emit('chat', pesan);
+        })
+
+        var messages = document.getElementById('message');
+
+        socket.on('chat', function(msg) {
+            console.log(msg);
+            var item = document.createElement('li');
+            item.textContent = msg;
+            messages.appendChild(item);
+            window.scrollTo(0, document.body.scrollHeight);
+        });
     </script>
 @endsection

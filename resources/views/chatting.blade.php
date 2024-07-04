@@ -13,9 +13,7 @@
         <span class="sr-only">Close menu</span>
     </button>
     <form class="mb-6">
-        <div class="flex flex-col h-[500px] bg-gray-200 mb-3">
-
-        </div>
+        <div id="message" class="flex flex-col h-[500px] bg-gray-200 mb-3"></div>
         <div class="mb-6">
             <label for="description"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pesan</label>
