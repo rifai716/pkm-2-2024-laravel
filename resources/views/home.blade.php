@@ -3,7 +3,7 @@
     @include('navbar-home')
     <section class="container mx-auto my-28">
         <div class="mx-10">
-            <div id="list-product" class="grid grid-cols-4 gap-5">
+            <div id="list-product" class="grid grid-cols-2 gap-2 sm:grid-cols-4 md:grid-cols-2 sm:gap-5">
                 @for ($i = 0; $i < 100; $i++)
                     @if ($i % 2 == 0)
                         <div
@@ -64,4 +64,22 @@
             </div>
         </div>
     </section>
+    @include('chatting')
+    <div class="text-center fixed bottom-[20px] right-[20px]">
+        <button
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            type="button" data-drawer-target="drawer-form" data-drawer-show="drawer-form" aria-controls="drawer-form">
+            Chat
+        </button>
+    </div>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+      var socket = io('http://localhost:3000');
+
+      $('#kirim').click(function() {
+        let pesan = $('#description').val();
+        socket.emit('chat', pesan);
+      })
+    </script>
 @endsection
