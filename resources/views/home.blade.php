@@ -75,11 +75,15 @@
     <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
-        var socket = io('http://localhost:3000');
+        var socket = io('https://chat.demo.deerdeveloper.com');
 
         $('#kirim').click(function() {
+            let name = $('#nama').val();
             let pesan = $('#description').val();
-            socket.emit('chat', pesan);
+            socket.emit('chat', {
+                sender: name,
+                message: pesan
+            });
         })
 
         var messages = document.getElementById('message');
@@ -87,7 +91,8 @@
         socket.on('chat', function(msg) {
             console.log(msg);
             var item = document.createElement('li');
-            item.textContent = msg;
+            item.classList.add('whatsapp');
+            item.innerHTML = `<h5>${msg.sender}</h5><span>${msg.message}</span>`;
             messages.appendChild(item);
             window.scrollTo(0, document.body.scrollHeight);
         });
